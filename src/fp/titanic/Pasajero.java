@@ -8,7 +8,7 @@ import java.util.Objects;
 import common.AlturaPeso;
 import utiles.Checkers;
 
-public class Titanic implements Comparable<Titanic>{
+public class Pasajero implements Comparable<Pasajero>{
 	private String name;
 	private String sex;
 	private Double ticketPrice;
@@ -35,13 +35,13 @@ public class Titanic implements Comparable<Titanic>{
 	}
 	private Boolean parseaBoolean(String x) {
 		Boolean res = false;
-		if (x == "1"){
+		if (x.equals("1")){
 			res = true;
 		}
 		return res;
 	}
 	
-	public Titanic(String name, String sex, Double ticketPrice, Puerta portEmbarked, LocalDate dateOfBirth,
+	public Pasajero(String name, String sex, Double ticketPrice, Puerta portEmbarked, LocalDate dateOfBirth,
 			String survived, String rich, String highestPriceBelongings, AlturaPeso alturaPeso) {
 		Checkers.check("El nombre no puede estar vacio", name != "");
 		Checkers.check("El precio del ticket no puede ser menor que 0", ticketPrice >= 0);
@@ -54,7 +54,7 @@ public class Titanic implements Comparable<Titanic>{
 		this.rich = parseaBoolean(rich);
 		this.highestPriceBelongings = parseaLista(highestPriceBelongings);
 	}
-	public Titanic(String name, String sex,String survived) {
+	public Pasajero(String name, String sex,String survived) {
 		Checkers.check("El nombre no puede estar vacio", name != "");
 		this.name = name;
 		this.sex = sex;
@@ -156,10 +156,10 @@ public class Titanic implements Comparable<Titanic>{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Titanic other = (Titanic) obj;
+		Pasajero other = (Pasajero) obj;
 		return Objects.equals(name, other.name) && Objects.equals(sex, other.sex);
 	}
-	public int compareTo(Titanic t) {
+	public int compareTo(Pasajero t) {
 		int res = this.getName().compareTo(t.getName());
 		if (res == 0) {
 			res = getSex().compareTo(t.getSex());

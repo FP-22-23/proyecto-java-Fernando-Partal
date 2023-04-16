@@ -9,7 +9,7 @@ Autor/a: Fernando Partal García   uvus:VYP4652
   * **fp.utiles**:  Paquete que contiene las clases de utilidad. 
   * **common**:  Paquete que contiene la clase del tipo auxiliar.
 * **/data**: Contiene el dataset del proyecto.
-  * **titanic_train.csv**: Archivo csv que contiene datos de los diferentes pasajeros del titanic.
+  * **titanic.csv**: Archivo csv que contiene datos de los diferentes pasajeros del titanic.
     
 ## Estructura del *dataset*
 
@@ -30,7 +30,7 @@ El dataset original estaba compuesto por 10 columnas y 1000 datos. A partir de e
 
 Los tipos que se han implementado en el proyecto son los siguientes:
 
-### Tipo Base - Titanica
+### Tipo Base - Pasajero
 Representa un pasajero del titanic en concreto.
 .
 **Propiedades**:
@@ -43,12 +43,14 @@ Representa un pasajero del titanic en concreto.
 - **survived**, de tipo Boolean, consultable y modificable. Indica si el pasajero sobrevivio o no. 1 = true, 0 = false..
 - **rich**, de tipo Boolean, consultable y modificable. Indica si el pasajero era rico o no. 1 = true, 0 = false..
 - **highestPriceBelongings**, de tipo List\<String\>, consultable y modificable. Lista de pertenencias con mayor valor del pasajero en cuestión..
-- **edad**, de tipo Integer, consultable. Propiedad derivada, se obtiene a partir de la resta entre el año del hundimiento del titanic (1912), y el año de nacimiento del pasajero. .
+- **edad**, de tipo Integer, consultable. Propiedad derivada, se obtiene a partir de la resta entre el año del hundimiento del titanic (1912), y el año de nacimiento del pasajero. .
+
 
 **Constructores**:
 
 - C1: Tiene un parámetro por cada propiedad básica del tipo..
-- C2: Crea un objeto de tipo **Titanic** a partir de los siguientes parámetros: name , sex y survived. Todos los demás parametros pasan a tomar el valor "null", menos portEmbarked que es de serie = Q..
+- C2: Crea un objeto de tipo **Pasajero** a partir de los siguientes parámetros: name , sex y survived. Todos los demás parametros pasan a tomar el valor "null", menos portEmbarked que es de serie = Q..
+
 
 **Restricciones** 
 - R1: El nombre no puede estar vacio..
@@ -69,5 +71,48 @@ Representa un pasajero del titanic en concreto.
 #### Tipos auxiliares
 
 
-- AlturaPeso: Está compuesto por el peso del pasajero, de tipo Double (en kg) y por la aultura, de tipo Integer, en (cm)..
+- AlturaPeso: Está compuesto por el peso del pasajero, de tipo Double (en kg) y por la aultura, de tipo Integer, en (cm).
 
+### Factoria:
+
+ - Clase FactoriaTitanic para crear objetos de tipo Pasajeros.
+ 
+ Constructores:
+ 
+ 	- parseaPasajero: Recibe una linea del csv y devuelve un objeto de tipo Pasajero.
+ 	
+ 	- leerPasajeros: Recibe una ruta de archivo csv y duvuelve una lista de tipo pasajeros, con cada uno de los pasajeros del csv.
+
+### Tipo Contenedor:
+
+ - Clase contenedora de los objetos de tipo Pasajero.
+
+ **Propiedades:**
+ 
+ 	- pasajeros: de tipo List<Pasajero>, consultable. Lista de pasajeros del titanic.
+	- agregarPasajero: de tipo void. Agrega un pasajero a la lista de pasajeros.
+	- getNumeroPasajeros, de tipo int. Devuelve el tamaño de la lista.
+	- agregarPasajeros, de tipo void. Agrega una colleccion de pasajeros a la lista.
+	- eliminarPasajeros, de tipo void. Elimina un pasajero en concreto de la lista.
+
+ **Constructores:**
+ 
+ 	- C1: Constructor por defecto, crea una lista vacia.
+ 	- C2: Constructor que recibe una coleccion de elementos y a partir de esta crea una lista.
+ 
+ **Criterio de igualdad:** Dos pasajeros son iguales si los son sus propiedades.
+ 
+ **Otras Operaciones:**
+ 	
+ 		- getCosteTicketMedio: De tipo Double, devuelve el Coste medio de los tickets.
+ 	
+ 		-getEstaPasajero: De tipo Boolean, devuelve true o false si el pasajero pasado como parametro está en la lista o no.
+ 	
+ 		-getListaFiltradaSupervivientes: De tipo List<Pasajero>, devuelve una lista filtrada con los pasajeros que hayan sobrevivido o no segun si se le pasa por parametro true o false.
+ 	
+ 		-getDiccionarioSegunPuertaEmbarque: De tipo Map<Puerta,List<Pasajero>>, devuelve un diccionario en el que ordena a los pasajeros segun por que puerta de embarque hayan entrado.
+ 	
+ 		-getCosteDelTicketSegunSituacionEconomica: De tipo Map<Boolean,Double>, devuelve un diccionario en el que diferencia el coste total del ticket de todos los pasajeros ricos y el de todos los que no lo son.
+ 	
+	
+ 	
