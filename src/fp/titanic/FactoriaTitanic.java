@@ -54,6 +54,17 @@ public class FactoriaTitanic {
 		}
 		return res;
 	}
+	public static Pasajeros leerPasajerosStream(String registro) {
+		Pasajeros res = null; 
+		try {
+		Stream<Pasajero> pasajeros =Files.lines(Paths.get(registro)).skip(1).map(FactoriaTitanic::parseaPasajero);
+			res = new PasajerosImpl(pasajeros);
+			} catch(IOException e) {
+			System.out.println("Fichero no encontrado: ");
+			e.printStackTrace();
+		}
+		return res;
+	}
 }
 
 	

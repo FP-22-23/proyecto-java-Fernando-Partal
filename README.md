@@ -113,6 +113,24 @@ Representa un pasajero del titanic en concreto.
  		-getDiccionarioSegunPuertaEmbarque: De tipo Map<Puerta,List<Pasajero>>, devuelve un diccionario en el que ordena a los pasajeros segun por que puerta de embarque hayan entrado.
  	
  		-getCosteDelTicketSegunSituacionEconomica: De tipo Map<Boolean,Double>, devuelve un diccionario en el que diferencia el coste total del ticket de todos los pasajeros ricos y el de todos los que no lo son.
- 	
+ 		
+ 		-getCosteTicketMedioStream: De tipo Double, devuelve el Coste medio de los tickets.
+ 		
+ 		-getEstaPasajeroStream: De tipo Boolean, devuelve true o false si el pasajero pasado como parametro está en la lista o no.
+ 		
+ 		-getListaFiltradaSupervivientesStream: De tipo List<Pasajero>, devuelve una lista filtrada con los pasajeros que hayan sobrevivido o no segun si se le pasa por parametro true o false.
+ 		-getEdadMaxima: De tipo Integer, devuelve el valor numerico de la edad maxima entre los pasajeros del titanic.
+ 		
+ 		-getListaFiltradaSexoOrdenadaEdad: De tipo List<Pasajero>, devuelve una lista filtrada segun el sexo pasado como parametro y ordenada segun la edad de los pasajeros.
+ 		
+ 		-getDiccionarioSegunPuertaEmbarqueStream: De tipo Map<Puerta,List<Pasajero>>, devuelve un diccionario en el que ordena a los pasajeros segun por que puerta de embarque hayan entrado.
+ 		
+ 		-getDiccionarioTicketPriceSegunPuertaEmbarque: De tipo Map<Puerta,List<Double>> , devuelve un diccionario con los precios de los tickets segun la puerta de embarque utilizada.
+ 		
+ 		-getDiccionarioEdadMinimaSegunGenero: De tipo Map<String, Integer>, devuelve un diccionario con la edad minima segun el genero del pasajero.
+ 		
+ 		-getDiccionarioOrdenadoConLosNMayoresEdadesSegunSupervivencia: De tipo SortedMap<Boolean, List<String>>, devuelve un sorted map con los n nombres de los pasajeros mas mayores segun si sobrevivieron o no.
+ 		
+ 		-getPuertaEmbarqueConTicketMasCaro: De tipo Puerta, devuelve la Puerta a la que le corresponde el ticket mas caro.
 	
  	
